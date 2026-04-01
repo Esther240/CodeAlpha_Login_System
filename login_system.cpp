@@ -2,26 +2,35 @@
 #include <fstream>
 using namespace std;
 
-// Function to check if username already exists
+// Check if username already exists
 bool userExists(string username) {
     ifstream file("users.txt");
     string user, pass;
 
     while (file >> user >> pass) {
         if (user == username) {
+            file.close();
             return true;
         }
     }
+
+    file.close();
     return false;
 }
 
-// Registration function
+// Register function
 void registerUser() {
     string username, password;
 
     cout << "\n--- Registration ---\n";
     cout << "Enter username: ";
     cin >> username;
+
+    // Validation
+    if (username.length() < 3) {
+        cout << "❌ Username must be at least 3 characters\n";
+        return;
+    }
 
     if (userExists(username)) {
         cout << "❌ Username already exists!\n";
@@ -31,8 +40,14 @@ void registerUser() {
     cout << "Enter password: ";
     cin >> password;
 
+    if (password.length() < 3) {
+        cout << "❌ Password must be at least 3 characters\n";
+        return;
+    }
+
     ofstream file("users.txt", ios::app);
     file << username << " " << password << endl;
+    file.close();
 
     cout << "✅ Registration successful!\n";
 }
@@ -46,6 +61,7 @@ void loginUser() {
     cout << "\n--- Login ---\n";
     cout << "Enter username: ";
     cin >> username;
+
     cout << "Enter password: ";
     cin >> password;
 
@@ -58,6 +74,8 @@ void loginUser() {
         }
     }
 
+    file.close();
+
     if (found) {
         cout << "✅ Login successful! Welcome " << username << endl;
     } else {
@@ -65,7 +83,7 @@ void loginUser() {
     }
 }
 
-// Main menu
+// Main function
 int main() {
     int choice;
 
@@ -88,7 +106,7 @@ int main() {
                 cout << "Exiting...\n";
                 break;
             default:
-                cout << "Invalid choice!\n";
+                cout << "❌ Invalid choice!\n";
         }
 
     } while (choice != 3);
