@@ -1,0 +1,40 @@
+===== LOGIN SYSTEM =====
+1. Register
+2. Login
+3. Exit
+Enter choice: 1
+
+--- Registration ---
+Enter username: john
+Enter password: 1234
+✅ Registration successful!
+
+===== LOGIN SYSTEM =====
+1. Register
+2. Login
+3. Exit
+Enter choice: 2
+
+--- Login ---
+Enter username: john
+Enter password: 1234
+✅ Login successful! Welcome john
+
+===== LOGIN SYSTEM =====
+1. Register
+2. Login
+3. Exit
+Enter choice: 2
+
+--- Login ---
+Enter username: john
+Enter password: wrongpass
+❌ Invalid username or password!
+
+===== LOGIN SYSTEM =====
+1. Register
+2. Login
+3. Exit
+Enter choice: 3
+
+Exiting...
